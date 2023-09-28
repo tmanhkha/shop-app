@@ -7,7 +7,7 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: appdb
-      POSTGRES_USER: user
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
@@ -20,7 +20,7 @@ services:
     environment:
       DB_HOST: db
       DB_NAME: appdb
-      DB_USERNAME: user
+      DB_USERNAME: postgres
       DB_PASSWORD: password
     ports:
       - "3000:3000"

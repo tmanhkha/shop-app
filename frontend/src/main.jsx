@@ -1,34 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import "./index.css";
-import Layout from "./components/layout/Layout.jsx";
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-
-const router = createBrowserRouter([
-  {
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-    ],
-  },
-]);
+import SignInContainer from "@/containers/SignIn";
+import SignUpContainer from "@/containers/SignUp";
+import AppContainer from "@/containers/AppContainer";
+import Header from "@/components/layout/Header.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Router>
+      <Toaster />
+      <Switch>
+        <Route exact path="/sign_in" component={SignInContainer} />
+        <Route exact path="/sign_up" component={SignUpContainer} />
+        <Route exact path="/" component={AppContainer} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
 );
