@@ -1,0 +1,17 @@
+require:
+  - rubocop-rails
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+
+Style/Documentation:
+  Enabled: false
