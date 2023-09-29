@@ -25,7 +25,7 @@ function Header() {
     <nav className="flex items-center justify-between flex-wrap bg-gray-100 p-6">
       <div className="flex items-center flex-shrink-0 text-black mr-6">
         <Link to="/" className="font-semibold text-xl tracking-tight">
-          Funny Movie
+          Shop
         </Link>
       </div>
       {currentUser ? (
@@ -36,7 +36,7 @@ function Header() {
                 to="sign_up"
                 className="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-blue-400 hover:text-blue-500 mt-4 lg:mt-0"
               >
-                Share a movie
+                Request new card
               </Link>
             </div>
             <div>

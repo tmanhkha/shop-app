@@ -30,5 +30,9 @@ module Users
     def log_out_failure
       render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
     end
+
+    def is_flashing_format? # rubocop:disable Naming/PredicateName
+      false
+    end
   end
 end

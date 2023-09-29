@@ -20,5 +20,9 @@ module Users
     def register_failed
       render json: { error: resource.errors.full_messages.to_sentence }, status: :bad_request
     end
+
+    def is_flashing_format? # rubocop:disable Naming/PredicateName
+      false
+    end
   end
 end
