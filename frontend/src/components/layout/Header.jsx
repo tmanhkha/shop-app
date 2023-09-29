@@ -4,11 +4,16 @@ import AppConfig from "@/constants/AppConfig.js";
 import Button from "@/components/common/Button/index.jsx";
 import { logout } from "@/services/auth.js";
 import { getUserFromLocalStorage } from "@/utils/authUtils.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import Login from "@/containers/SignIn/index.jsx";
 function Header() {
   const history = useHistory();
   const currentUser = getUserFromLocalStorage();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleLogout = async () => {
+  const handleLogout = async (e) => {
+    e.preventDefault();
     const response = await logout();
 
     if (response) {
@@ -22,49 +27,105 @@ function Header() {
   };
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-gray-100 p-6">
-      <div className="flex items-center flex-shrink-0 text-black mr-6">
-        <Link to="/" className="font-semibold text-xl tracking-tight">
-          Shop
-        </Link>
-      </div>
-      {currentUser ? (
-        <>
-          <div className="flex lg:flex lg:items-center lg:w-auto gap-2">
-            <div>
-              <Link
-                to="sign_up"
-                className="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-blue-400 hover:text-blue-500 mt-4 lg:mt-0"
+    <>
+      <header className="w-full items-center bg-white py-2 px-6 hidden sm:flex">
+        <div className="w-1/2"></div>
+        <div className="relative w-1/2 flex justify-end">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none"
+          >
+            <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400" />
+          </button>
+          {isOpen && (
+            <button
+              onClick={() => setIsOpen(false)}
+              className="h-full w-full fixed inset-0 cursor-default"
+            ></button>
+          )}
+          {isOpen && (
+            <div className="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+              <a
+                href="#"
+                className="block px-4 py-2 account-link hover:text-white"
               >
-                Request new card
-              </Link>
+                Account
+              </a>
+              <a
+                href="#"
+                className="block px-4 py-2 account-link hover:text-white"
+              >
+                Support
+              </a>
+              <a
+                href="#"
+                className="block px-4 py-2 account-link hover:text-white"
+                onClick={handleLogout}
+              >
+                Sign Out
+              </a>
             </div>
-            <div>
-              <Button label="Logout" onClick={handleLogout} />
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="flex lg:flex lg:items-center lg:w-auto gap-2">
-          <div>
-            <Link
-              to="sign_up"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-blue-400 hover:text-blue-500 mt-4 lg:mt-0"
-            >
-              Sign Up
-            </Link>
-          </div>
-          <div>
-            <Link
-              to="sign_in"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent bg-blue-400 hover:bg-blue-500 mt-4 lg:mt-0"
-            >
-              Sign In
-            </Link>
-          </div>
+          )}
         </div>
-      )}
-    </nav>
+      </header>
+
+      <header className="w-full bg-sidebar py-5 px-6 sm:hidden">
+        <div className="flex items-center justify-between">
+          <Link
+            to="/"
+            className="text-white text-3xl font-semibold uppercase hover:text-gray-300"
+          >
+            Admin
+          </Link>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white text-3xl focus:outline-none"
+          >
+            {!isOpen && <FontAwesomeIcon icon="fas fa-bars" />}
+            {isOpen && <FontAwesomeIcon icon="fas fa-times" />}
+          </button>
+        </div>
+
+        <nav className={isOpen ? "flex flex-col pt-4" : "hidden flex-col pt-4"}>
+          <Link
+            to="/dashboard"
+            className="flex items-center active-nav-link text-white py-2 pl-4 nav-item"
+          >
+            <FontAwesomeIcon icon="fas fa-tachometer-alt" className="mr-3" />
+            Dashboard
+          </Link>
+          <Link
+            to="/brand"
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <FontAwesomeIcon icon="fa fa-store" className="mr-3" />
+            Brand
+          </Link>
+          <a
+            href="forms.html"
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <FontAwesomeIcon icon="fas fa-align-left" className="mr-3" />
+            Forms
+          </a>
+          <a
+            href="#"
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <FontAwesomeIcon icon="fas fa-user" className="mr-3" />
+            My Account
+          </a>
+          <a
+            href="#"
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+            onClick={handleLogout}
+          >
+            <FontAwesomeIcon icon="fas fa-sign-out-alt" className="mr-3" />
+            Sign Out
+          </a>
+        </nav>
+      </header>
+    </>
   );
 }
 
