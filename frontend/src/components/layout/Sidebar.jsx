@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Sidebar() {
+  const location = useLocation();
   return (
     <aside className="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
       <div className="p-6">
@@ -20,14 +21,18 @@ function Sidebar() {
       <nav className="text-white text-base font-semibold pt-3">
         <Link
           to="/dashboard"
-          className="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+          className={`flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item ${
+            location.pathname.includes("dashboard") ? "active-nav-link" : ""
+          }`}
         >
           <FontAwesomeIcon icon="fas fa-tachometer-alt" className="mr-3" />
           Dashboard
         </Link>
         <Link
           to="/brand"
-          className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          className={`flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item ${
+            location.pathname.includes("brand") ? "active-nav-link" : ""
+          }`}
         >
           <FontAwesomeIcon icon="fa fa-store" className="mr-3" />
           Brand

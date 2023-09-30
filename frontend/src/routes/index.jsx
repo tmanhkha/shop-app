@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import AppConfig from "@/constants/AppConfig.js";
 import DashboardContainer from "@/containers/DashboardContainer";
 import BrandContainer from "@/containers/BrandContainer/index.jsx";
@@ -8,7 +8,9 @@ import EditBrandContainer from "@/containers/BrandContainer/EditBrandContainer/i
 function Routes() {
   return (
     <Switch>
-      <Route exact path="/" />
+      <Route exact path="/">
+        <Redirect to="/dashboard" />
+      </Route>
       <Route
         exact
         path={AppConfig.ROUTES.DASHBOARD}
