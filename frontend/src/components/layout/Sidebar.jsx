@@ -37,13 +37,6 @@ function Sidebar() {
           <FontAwesomeIcon icon="fa fa-store" className="mr-3" />
           Brand
         </Link>
-        <a
-          href="forms.html"
-          className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
-        >
-          <FontAwesomeIcon icon="fas fa-align-left" className="mr-3" />
-          Forms
-        </a>
       </nav>
     </aside>
   );

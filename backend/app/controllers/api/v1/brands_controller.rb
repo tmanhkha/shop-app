@@ -33,7 +33,7 @@ module Api
         authorize @brand, :update?
 
         if @brand.update(brand_params)
-          render json: brand, serializer: BrandSerializer, status: :ok
+          render json: @brand, serializer: BrandSerializer, status: :ok
         else
           render json: { error: @brand.errors.full_messages }, status: :unprocessable_entity
         end

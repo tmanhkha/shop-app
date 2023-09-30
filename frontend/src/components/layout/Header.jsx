@@ -1,14 +1,13 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import AppConfig from "@/constants/AppConfig.js";
-import Button from "@/components/common/Button/index.jsx";
 import { logout } from "@/services/auth.js";
 import { getUserFromLocalStorage } from "@/utils/authUtils.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import Login from "@/containers/SignIn/index.jsx";
 function Header() {
   const history = useHistory();
+  const location = useLocation();
   const currentUser = getUserFromLocalStorage();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -89,25 +88,23 @@ function Header() {
         <nav className={isOpen ? "flex flex-col pt-4" : "hidden flex-col pt-4"}>
           <Link
             to="/dashboard"
-            className="flex items-center active-nav-link text-white py-2 pl-4 nav-item"
+            className={`flex items-center text-white py-2 pl-4 nav-item ${
+              location.pathname.includes("dashboard") ? "active-nav-link" : ""
+            }
+            `}
           >
             <FontAwesomeIcon icon="fas fa-tachometer-alt" className="mr-3" />
             Dashboard
           </Link>
           <Link
             to="/brand"
-            className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+            className={`flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item ${
+              location.pathname.includes("brand") ? "active-nav-link" : ""
+            }`}
           >
             <FontAwesomeIcon icon="fa fa-store" className="mr-3" />
             Brand
           </Link>
-          <a
-            href="forms.html"
-            className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
-          >
-            <FontAwesomeIcon icon="fas fa-align-left" className="mr-3" />
-            Forms
-          </a>
           <a
             href="#"
             className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"

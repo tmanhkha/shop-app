@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :brand do
-    name { 'MyString' }
-    description { 'MyText' }
-    country { 'MyString' }
+    name { Faker::Name.name }
+    description { Faker::Quote.famous_last_words }
+    country { Faker::Address.state_abbr }
+    status { :active }
   end
 end

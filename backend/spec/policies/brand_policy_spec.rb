@@ -3,27 +3,26 @@
 require 'rails_helper'
 
 RSpec.describe BrandPolicy, type: :policy do
-  let(:user) { User.new }
+  let(:admin) { User.new(role: :admin) }
+  let(:client) { User.new(role: :client) }
 
   subject { described_class }
 
   permissions '.scope' do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'returns all brands' do
+      expect(BrandPolicy::Scope.new(admin, Brand).resolve).to eq Brand.all
+    end
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  permissions :show?, :create?, :update?, :destroy? do
+    let(:brand) { create(:brand) }
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+    it 'allows access for an admin ' do
+      expect(subject).to permit(admin, brand)
+    end
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'denies access for a client' do
+      expect(subject).not_to permit(client, brand)
+    end
   end
 end
