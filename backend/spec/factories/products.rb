@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :product do
-    name { 'MyString' }
-    description { 'MyText' }
-    status { 1 }
-    brand { nil }
+    name { Faker::Name.name }
+    description { Faker::Quote.famous_last_words }
+    status { :active }
+    association :brand
   end
 end
