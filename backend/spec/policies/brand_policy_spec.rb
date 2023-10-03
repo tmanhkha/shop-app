@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe BrandPolicy, type: :policy do
-  let(:admin) { User.new(role: :admin) }
-  let(:client) { User.new(role: :client) }
+  let(:admin) { User.new }
+  let(:client) { Client.new }
 
   subject { described_class }
 

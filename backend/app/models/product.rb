@@ -3,6 +3,8 @@
 class Product < ApplicationRecord
   belongs_to :brand
   has_many :prices, dependent: :destroy
+  has_many :client_products, dependent: :destroy
+  has_many :clients, through: :client_products
 
   validates :name, presence: true
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Users
+module Clients
   class SessionsController < Devise::SessionsController
     include RackSessionFix
     respond_to :json
@@ -8,17 +8,17 @@ module Users
     private
 
     def respond_with(_resource, _opts = {})
-      user = User.find_by(email: sign_in_params[:email])
+      client = Client.find_by(email: sign_in_params[:email])
 
-      if user&.valid_password?(sign_in_params[:password])
-        render json: { user: user.as_json.merge(role: 'admin') }, status: :ok
+      if client&.valid_password?(sign_in_params[:password])
+        render json: { user: client.as_json.merge(role: 'client') }, status: :ok
       else
         render json: { error: 'Your password or email is not correct' }, status: :forbidden
       end
     end
 
     def respond_to_on_destroy
-      log_out_success && return if current_user
+      log_out_success && return if current_client
 
       log_out_failure
     end

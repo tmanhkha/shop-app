@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BrandPolicy < ApplicationPolicy
+class ClientPolicy < ApplicationPolicy
   def index?
     user_has_access?
   end

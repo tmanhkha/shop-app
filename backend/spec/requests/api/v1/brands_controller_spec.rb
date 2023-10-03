@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::BrandsController do
   let(:admin) { create(:user) }
-  let(:client) { create(:user, :role_client) }
+  let(:client) { create(:client) }
 
   describe 'GET /api/v1/brands' do
     before do

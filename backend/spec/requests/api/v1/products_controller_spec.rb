@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ProductsController do
   let(:admin) { create(:user) }
-  let(:client) { create(:user, :role_client) }
+  let(:client) { create(:client) }
   let(:brand) { create(:brand) }
 
   describe 'GET /api/v1/products' do
