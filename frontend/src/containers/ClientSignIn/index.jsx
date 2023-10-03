@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import AppConfig from "@/constants/AppConfig.js";
-import { postSignIn } from "@/services/auth.js";
 import { getUserFromLocalStorage } from "@/utils/authUtils.js";
+import { postSignIn } from "@/services/client_auth.js";
 
-function Login() {
+function ClientSignInContainer() {
   const history = useHistory();
   const currentUser = getUserFromLocalStorage();
 
@@ -54,7 +54,7 @@ function Login() {
       <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md">
         <div className="p-5 bg-white md:flex-1">
           <h3 className="my-4 text-2xl font-semibold text-gray-700">
-            Account Login
+            Client Login
           </h3>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-5">
             <div className="flex flex-col space-y-1">
@@ -107,4 +107,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ClientSignInContainer;

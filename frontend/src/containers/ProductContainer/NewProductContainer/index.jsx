@@ -105,7 +105,7 @@ function NewProductContainer() {
     <main className="w-full flex-grow p-6">
       <h1 className="text-3xl text-black pb-6">New Product</h1>
       <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
+        <div className="w-full my-6 pr-0 lg:pr-2">
           <div className="leading-loose">
             <form
               onSubmit={handleSubmit}

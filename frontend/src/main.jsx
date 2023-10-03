@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
 import SignInContainer from "@/containers/SignIn";
-import SignUpContainer from "@/containers/SignUp";
+import ClientSignInContainer from "@/containers/ClientSignIn";
 import AppContainer from "@/containers/AppContainer";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Toaster />
       <Switch>
         <Route path="/sign_in" component={SignInContainer} />
-        <Route path="/sign_up" component={SignUpContainer} />
+        <Route path="/client/sign_in" component={ClientSignInContainer} />
         <Route path="/" component={AppContainer} />
       </Switch>
     </Router>

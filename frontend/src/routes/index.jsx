@@ -7,6 +7,9 @@ import EditBrandContainer from "@/containers/BrandContainer/EditBrandContainer/i
 import ProductContainer from "@/containers/ProductContainer/index.jsx";
 import NewProductContainer from "@/containers/ProductContainer/NewProductContainer/index.jsx";
 import EditProductContainer from "@/containers/ProductContainer/EditProductContainer/index.jsx";
+import ClientContainer from "@/containers/ClientContainer/index.jsx";
+import NewClientContainer from "@/containers/ClientContainer/NewClientContainer/index.jsx";
+import EditClientContainer from "@/containers/ClientContainer/EditClientContainer/index.jsx";
 
 function Routes() {
   return (
@@ -46,6 +49,18 @@ function Routes() {
         exact
         path={`${AppConfig.ROUTES.PRODUCT}/:productId`}
         component={EditProductContainer}
+      />
+
+      <Route exact path={AppConfig.ROUTES.CLIENT} component={ClientContainer} />
+      <Route
+        exact
+        path={AppConfig.ROUTES.NEW_CLIENT}
+        component={NewClientContainer}
+      />
+      <Route
+        exact
+        path={`${AppConfig.ROUTES.CLIENT}/:clientId`}
+        component={EditClientContainer}
       />
     </Switch>
   );

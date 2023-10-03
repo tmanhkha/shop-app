@@ -8,6 +8,8 @@ const AppConfig = {
     NEW_BRAND: "/brand/new",
     PRODUCT: "/product",
     NEW_PRODUCT: "/product/new",
+    CLIENT: "/client",
+    NEW_CLIENT: "/client/new",
   },
   STATUS_OPTIONS: [
     { value: "active", label: "Active" },

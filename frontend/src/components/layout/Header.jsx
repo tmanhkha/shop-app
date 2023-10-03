@@ -2,6 +2,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import AppConfig from "@/constants/AppConfig.js";
 import { logout } from "@/services/auth.js";
+import { clientLogout } from "@/services/client_auth.js";
 import { getUserFromLocalStorage } from "@/utils/authUtils.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
@@ -13,7 +14,12 @@ function Header() {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    const response = await logout();
+    let response = "";
+    if (currentUser.role === "admin") {
+      response = await logout();
+    } else if (currentUser.role === "client") {
+      response = await clientLogout();
+    }
 
     if (response) {
       toast.success("Logout Successfully");
