@@ -3,5 +3,5 @@
 class Price < ApplicationRecord
   belongs_to :product
 
-  validates :value, :currency, presence: true
+  validates :price, :currency, presence: true
 end

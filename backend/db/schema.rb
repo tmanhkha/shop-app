@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_151939) do
   end
 
   create_table "prices", force: :cascade do |t|
-    t.decimal "value", precision: 10, scale: 2, null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
     t.string "currency", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false

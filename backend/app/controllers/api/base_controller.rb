@@ -33,7 +33,8 @@ module Api
       {
         current_page: collection.respond_to?(:current_page) ? collection.current_page : 1,
         total_pages: collection.respond_to?(:total_pages) ? collection.total_pages : 1,
-        total_entries: collection.respond_to?(:total_count) ? collection.total_count : collection.length
+        total_entries: collection.respond_to?(:total_count) ? collection.total_count : collection.length,
+        has_more: collection.respond_to?(:last_page?) && !collection.last_page?
       }
     end
 
