@@ -53,12 +53,6 @@ function Header() {
               <a
                 href="#"
                 className="block px-4 py-2 account-link hover:text-white"
-              >
-                Support
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-2 account-link hover:text-white"
                 onClick={handleLogout}
               >
                 Sign Out
@@ -100,6 +94,15 @@ function Header() {
             to="/brand"
             className={`flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item ${
               location.pathname.includes("brand") ? "active-nav-link" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon="fa fa-store" className="mr-3" />
+            Brand
+          </Link>
+          <Link
+            to="/product"
+            className={`flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item ${
+              location.pathname.includes("product") ? "active-nav-link" : ""
             }`}
           >
             <FontAwesomeIcon icon="fa fa-store" className="mr-3" />

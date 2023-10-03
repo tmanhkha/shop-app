@@ -37,6 +37,15 @@ function Sidebar() {
           <FontAwesomeIcon icon="fa fa-store" className="mr-3" />
           Brand
         </Link>
+        <Link
+          to="/product"
+          className={`flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item ${
+            location.pathname.includes("product") ? "active-nav-link" : ""
+          }`}
+        >
+          <FontAwesomeIcon icon="fa fa-box-open" className="mr-3" />
+          Product
+        </Link>
       </nav>
     </aside>
   );

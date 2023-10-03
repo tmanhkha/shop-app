@@ -6,6 +6,8 @@ const AppConfig = {
     DASHBOARD: "/dashboard",
     BRAND: "/brand",
     NEW_BRAND: "/brand/new",
+    PRODUCT: "/product",
+    NEW_PRODUCT: "/product/new",
   },
   STATUS_OPTIONS: [
     { value: "active", label: "Active" },
