@@ -12,12 +12,18 @@ import NewClientContainer from "@/containers/ClientContainer/NewClientContainer/
 import EditClientContainer from "@/containers/ClientContainer/EditClientContainer/index.jsx";
 import CardContainer from "@/containers/CardContainer/index.jsx";
 import NewCardContainer from "@/containers/CardContainer/NewCardContainer/index.jsx";
+import { getUserFromLocalStorage } from "@/utils/authUtils.js";
 
 function Routes() {
+  const currentUser = getUserFromLocalStorage();
   return (
     <Switch>
       <Route exact path="/">
-        <Redirect to="/dashboard" />
+        {currentUser.role === "admin" ? (
+          <Redirect to="/dashboard" />
+        ) : (
+          <Redirect to="/product" />
+        )}
       </Route>
       <Route
         exact

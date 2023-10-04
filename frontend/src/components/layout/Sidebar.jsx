@@ -86,20 +86,6 @@ function Sidebar() {
             </div>
             <nav className="text-white text-base font-semibold pt-3">
               <Link
-                to="/dashboard"
-                className={`flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item ${
-                  location.pathname.includes("dashboard")
-                    ? "active-nav-link"
-                    : ""
-                }`}
-              >
-                <FontAwesomeIcon
-                  icon="fas fa-tachometer-alt"
-                  className="mr-3"
-                />
-                Dashboard
-              </Link>
-              <Link
                 to="/product"
                 className={`flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item ${
                   location.pathname.includes("product") ? "active-nav-link" : ""
