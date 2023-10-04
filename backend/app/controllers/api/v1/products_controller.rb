@@ -3,11 +3,14 @@
 module Api
   module V1
     class ProductsController < Api::BaseController
-      before_action :authenticate_user!
       before_action :find_product, only: %i[show update destroy]
 
-      def index
-        products = Product.order(created_at: :desc).page(params[:page]).per(params[:per_page])
+      def index # rubocop:disable Metrics/AbcSize
+        products = if current_client.present?
+                     current_client.products.order(created_at: :desc).page(params[:page]).per(params[:per_page])
+                   else
+                     Product.order(created_at: :desc).page(params[:page]).per(params[:per_page])
+                   end
 
         render_collection products, each_serializer: ProductSerializer
       end

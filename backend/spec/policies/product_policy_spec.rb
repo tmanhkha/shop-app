@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe ProductPolicy, type: :policy do
-  let(:admin) { User.new(role: :admin) }
-  let(:client) { User.new(role: :client) }
+  let(:admin) { User.new }
+  let(:client) { Client.new }
 
   subject { described_class }
 
@@ -14,7 +14,7 @@ RSpec.describe ProductPolicy, type: :policy do
     end
   end
 
-  permissions :show?, :create?, :update?, :destroy? do
+  permissions :create?, :update?, :destroy? do
     let(:product) { create(:product) }
 
     it 'allows access for an admin ' do

@@ -2,11 +2,11 @@
 
 class ProductPolicy < ApplicationPolicy
   def index?
-    user_has_access?
+    true
   end
 
   def show?
-    user_has_access?
+    true
   end
 
   def update?
@@ -22,6 +22,6 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def user_has_access?
-    user.admin?
+    user.is_a? User
   end
 end

@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :prices, dependent: :destroy
   has_many :client_products, dependent: :destroy
   has_many :clients, through: :client_products
+  has_many :cards, dependent: :destroy
 
   validates :name, presence: true
 
