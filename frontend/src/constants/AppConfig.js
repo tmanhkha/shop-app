@@ -10,6 +10,7 @@ const AppConfig = {
     NEW_PRODUCT: "/product/new",
     CLIENT: "/client",
     NEW_CLIENT: "/client/new",
+    CARD: "/card",
   },
   STATUS_OPTIONS: [
     { value: "active", label: "Active" },

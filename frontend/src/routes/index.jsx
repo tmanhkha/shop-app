@@ -10,6 +10,8 @@ import EditProductContainer from "@/containers/ProductContainer/EditProductConta
 import ClientContainer from "@/containers/ClientContainer/index.jsx";
 import NewClientContainer from "@/containers/ClientContainer/NewClientContainer/index.jsx";
 import EditClientContainer from "@/containers/ClientContainer/EditClientContainer/index.jsx";
+import CardContainer from "@/containers/CardContainer/index.jsx";
+import NewCardContainer from "@/containers/CardContainer/NewCardContainer/index.jsx";
 
 function Routes() {
   return (
@@ -50,6 +52,11 @@ function Routes() {
         path={`${AppConfig.ROUTES.PRODUCT}/:productId`}
         component={EditProductContainer}
       />
+      <Route
+        exact
+        path={`${AppConfig.ROUTES.PRODUCT}/:productId/card/new`}
+        component={NewCardContainer}
+      />
 
       <Route exact path={AppConfig.ROUTES.CLIENT} component={ClientContainer} />
       <Route
@@ -62,6 +69,8 @@ function Routes() {
         path={`${AppConfig.ROUTES.CLIENT}/:clientId`}
         component={EditClientContainer}
       />
+
+      <Route exact path={AppConfig.ROUTES.CARD} component={CardContainer} />
     </Switch>
   );
 }
