@@ -45,5 +45,9 @@ module Api
     def record_not_found
       render json: { message: 'not found' }, status: :not_found
     end
+
+    def pundit_user
+      current_user || current_client
+    end
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
       resources :clients
       resources :cards, only: :index
+      resources :reports, only: :index
     end
   end
 end
